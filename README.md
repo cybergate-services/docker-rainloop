@@ -1,6 +1,6 @@
 # docker-rainloop
 
-This container provides Rainloop web mail as an alternative to Roundcube and Sogo web mail in OpenEMAIL. This container is based on [hardware/rainloop](https://github.com/hardware/rainloop)
+This container provides Rainloop web mail as an alternative to Roundcube and Sogo web mail in OpenEMAIL. This container is based on [hardware/rainloop](https://github.com/hardware/rainloop). 
 
 # docker-compose
 
@@ -12,6 +12,11 @@ rainloop-openemail:
   container_name: rainloop
   links:
     - mysql:mysql
+  environment:
+    - TZ=${TZ}
+    - UPLOAD_MAX_SIZE=25M
+    - LOG_TO_STDOUT=true
+    - MEMORY_LIMIT=128M
   volumes:
     - ./data/rainloop:/rainloop/data
   depends_on:
